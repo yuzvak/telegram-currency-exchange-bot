@@ -1,1 +1,2 @@
-# to start write node start
+#How to start?
+to start write node start
