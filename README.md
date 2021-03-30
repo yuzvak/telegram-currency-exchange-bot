@@ -1,2 +1,2 @@
 # How to start?
-to start write node start
+to start set bot token in setting.json and write node start
