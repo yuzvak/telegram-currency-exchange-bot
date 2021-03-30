@@ -82,7 +82,6 @@ bot.on("polling_error", console.log);
 
 
 function updateLatest(callback) {
-    console.log(checkTimeout(), 'updated:' +  db.updated);
     if (checkTimeout()) {
         request.get('https://api.exchangeratesapi.io/latest?base=USD', (e,r,b) => {
             if (e) {
