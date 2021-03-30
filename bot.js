@@ -14,7 +14,7 @@ bot.onText(/(\/list|\/lst)/, (msg) => {
     updateLatest((data) => {
         let response = 'Available rates\n\n';
         for (let i in data) {
-            response += `${i}: ${ data[i].toFixed(2) }\n`
+            response += `${i}: ${data[i].toFixed(2)}\n`
         }
 
         bot.sendMessage(chatID, response);
@@ -55,7 +55,7 @@ bot.onText(/\/history (.+)\/(.+)/, (msg, match) => {
         date.setDate(date.getDate());
         return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
     }
-    request.get(`https://api.exchangeratesapi.io/history?start_at=${sevenDayAgo()}&end_at=${dateNow()}&base=${currencies.from}&symbols=${currencies.to}`,(e,r,b) => {
+    request.get(`https://api.exchangeratesapi.io/history?start_at=${sevenDayAgo()}&end_at=${dateNow()}&base=${currencies.from}&symbols=${currencies.to}`, (e, r, b) => {
         if (e) {
             bot.sendMessage(chatID, 'some error');
             return console.log(e);
@@ -71,7 +71,7 @@ bot.onText(/\/history (.+)\/(.+)/, (msg, match) => {
         const myChart = new QuickChart();
         myChart.setConfig({
             type: 'line',
-            data: { labels: dates, datasets: [{ label: `${currencies.to} to ${currencies.from}`, data: currencyHistory }] },
+            data: {labels: dates, datasets: [{label: `${currencies.to} to ${currencies.from}`, data: currencyHistory}]},
         });
         myChart.toBinary().then(r => bot.sendPhoto(chatID, r));
     })
@@ -83,7 +83,7 @@ bot.on("polling_error", console.log);
 
 function updateLatest(callback) {
     if (checkTimeout()) {
-        request.get('https://api.exchangeratesapi.io/latest?base=USD', (e,r,b) => {
+        request.get('https://api.exchangeratesapi.io/latest?base=USD', (e, r, b) => {
             if (e) {
                 bot.sendMessage(chatID, 'some error');
                 return console.log(e);
@@ -101,7 +101,7 @@ function updateLatest(callback) {
 }
 
 function updateCurrency(callback) {
-    request.get('https://api.exchangeratesapi.io/latest?base=USD', (e,r,b) => {
+    request.get('https://api.exchangeratesapi.io/latest?base=USD', (e, r, b) => {
         if (e) {
             bot.sendMessage(chatID, 'some error');
             return console.log(e);

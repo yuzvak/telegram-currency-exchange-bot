@@ -1,0 +1,32 @@
+{
+  "name": "telegram-currency-exchange-bot",
+  "version": "0.0.1",
+  "description": "test bot",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuzvak/telegram-currency-exchange-bot.git"
+  },
+  "keywords": [
+    "bot",
+    "telegram",
+    "currency"
+  ],
+  "author": "Ihor Yuzvak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuzvak/telegram-currency-exchange-bot/issues"
+  },
+  "homepage": "https://github.com/yuzvak/telegram-currency-exchange-bot#readme",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.51.0",
+    "quickchart-js": "^1.0.7"
+  },
+  "devDependencies": {
+    "request": "^2.88.2"
+  }
+}
