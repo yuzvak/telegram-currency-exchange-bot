@@ -61,6 +61,9 @@ bot.onText(/\/history (.+)\/(.+)/, (msg, match) => {
             return console.log(e);
         }
         const data = JSON.parse(b);
+        if (data.error) {
+            return bot.sendMessage(chatID, 'No exchange rate data is available for the selected currency');
+        }
         const dates = [];
         const currencyHistory = [];
         for (let i in data.rates) {
@@ -72,7 +75,7 @@ bot.onText(/\/history (.+)\/(.+)/, (msg, match) => {
         myChart.setConfig({
             type: 'line',
             data: {labels: dates, datasets: [{label: `${currencies.to} to ${currencies.from}`, data: currencyHistory}]},
-        });
+        }).setWidth(800);
         myChart.toBinary().then(r => bot.sendPhoto(chatID, r));
     })
 
