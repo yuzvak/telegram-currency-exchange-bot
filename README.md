@@ -1,2 +1,4 @@
 # How to start?
-to start set bot token in setting.json and write node start
+1. write npm i
+2. set bot token in setting.json
+3. write node.start
